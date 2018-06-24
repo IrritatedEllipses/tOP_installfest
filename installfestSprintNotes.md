@@ -36,7 +36,7 @@ The numbered steps below will be the same steps as posted in the current install
 
 2. Install Git. Worked as intended.
 
-   * Nothing was installed or updated with this one, probably can be removed. 
+   * Nothing was installed or updated with this one, probably can be removed.
 
 3. RVM Installation.
    1. Install RVM. Did not change terminal settings as recommended as not using the versions mentioned.
@@ -64,7 +64,7 @@ The numbered steps below will be the same steps as posted in the current install
    sudo apt-get install atom
    ```
 
-   I would suggest a section on editing programs, listing a few of the easy ones (Atom, Sublime, Notepad++ Visual Studios Code) with the explanation that it's time to learn how to read docs and find the best way to install their editor with the terminal. 
+   I would suggest a section on editing programs, listing a few of the easy ones (Atom, Sublime, Notepad++ Visual Studios Code) with the explanation that it's time to learn how to read docs and find the best way to install their editor with the terminal.
 
 7. Configure Git. Worked as intended.
 
@@ -80,8 +80,66 @@ The numbered steps below will be the same steps as posted in the current install
 
 11. The Heroku App.
 
-    * When pushing the app to Heroku it becomes necessary to update rake with `gem install rake -v '12.3.1'`. There are also several warnings about the bundler being out of date. I suggest the entire section of installing RVM, ruby and Ruby on Rails needs to be re-written. Most of the issues that have ocurred have stemmed from the installation of RVM, or versioning issues with Ruby or Ruby on Rails and the bundles therein. 
+    * When pushing the app to Heroku it becomes necessary to update rake with `gem install rake -v '12.3.1'`. There are also several warnings about the bundler being out of date. I suggest the entire section of installing RVM, ruby and Ruby on Rails needs to be re-written. Most of the issues that have ocurred have stemmed from the installation of RVM, or versioning issues with Ruby or Ruby on Rails and the bundles therein.
 
 12. Get a sticker.
 
     * There are no stickers. This is a critical issue that must be fixed.
+
+### Second Run
+
+VM has been rolled back to snapshot and tested with `ruby -v` which has shown no versions of ruby installed. I have started a log file with `script installfest.txt.` and will add the full text file to the repo upon completion. For this run I will continue to use the commands provided with the installfest EXCEPT the the first massive install library:
+
+```linux
+sudo apt-get install autoconf automake bison build-essential curl git-core libapr1 libaprutil1 libc6-dev libltdl-dev libreadline6 libreadline6-dev libsqlite3-0 libsqlite3-dev libssl-dev libtool libxml2-dev libxslt-dev libxslt1-dev libyaml-dev ncurses-dev nodejs openssl sqlite3 zlib1g zlib1g-dev
+```
+
+Missing dependencies will be noted and, if necessary, added before continuing.
+
+1. Install packaged software and libraries. Skipped.
+
+2. Install Git. Worked as intended.
+
+    * This time Git actually downloaded and installed something. It appears one of the packages in Step 1 also contains Git?
+
+3. RVM Installation
+
+    1. Install RVM.
+
+        * Curl is not installed. After running `sudo apt install curl` attempted again and failed, using both the installfest recommended method AND rvm.io method. However <https://rvm.io/rvm/install> lists a dedicated Ubuntu package at <https://github.com/rvm/ubuntu_rvm>. Following the instructions there:
+        ```linux
+        sudo apt-add-repository -y ppa:rael-gc/rvm
+        sudo apt-get update
+        sudo apt-get install rvm
+        ```
+         I was able to successfully install RVM. The installation of software-properties-common was not necessary. `rvm -v` returned version 1.29.3
+
+4. Install Ruby
+
+    * At this point I encountered a strange error. Although my preferences were already set to run command as a login shell I could not use `rvm use 2.3`. Instead, I had to `bash --login` to continue at which point everything continued as normal.
+
+5. Install Rails. Worked as intended.
+
+6. Install Atom. Worked as intended (Used truncated installation mentioned above).
+
+7. Configure Git. Worked as intended.
+
+8. Create an SSH key. Worked as intended.
+
+9. Create a Heroku account. Worked as intended (Using the `curl https://cli-assets.heroku.com/install.sh | sh` method).
+
+10. Configure GitHub. Worked as intended.
+
+11. The Heroku App
+
+    * Oh ho ho! We may have finally found something that the packaged libraries supplied to us and I did not have installed! There is no javascript runtime installed at this point! `Rails server` comes back with the "No javascript runtime" error. Running `sudo apt-get install nodejs` fixes the issue.
+
+    * Everything in the heroku installation works fine until the push to heroku occurs. At this point sqlite3 is bundled with the install which is not compatible with Heroku. As we have not installed postgresql at this point I believe that rails falls back to sqlite3 which is incompatible with heroku. Sadly, after a successful `sudo apt-get install postgresql` rails would not generate a scaffold for me. I attempted to remove the bin file and regenerate a new one but I believe that postgresql needs to be installed before working with rails the first time.
+
+12. Get a sticker
+
+    * After this failure I do not believe I deserve a sticker which is just as well as no sticker will be provided. Still a critical issue that has not been fixed.
+
+#### Final thoughts on second run through
+
+I believe that the process of installfest can be drastically reduced and made clearer. Considering that I finished this entire installation in less than an hour (Whereas my previous times had ranged as high as six hours and as low as two) I am excited to try again using the methods I've listed between these two installs. So excited, in fact, that I completely destroyed my log files in my haste to start over and try again.
