@@ -143,3 +143,50 @@ Missing dependencies will be noted and, if necessary, added before continuing.
 #### Final thoughts on second run through
 
 I believe that the process of installfest can be drastically reduced and made clearer. Considering that I finished this entire installation in less than an hour (Whereas my previous times had ranged as high as six hours and as low as two) I am excited to try again using the methods I've listed between these two installs. So excited, in fact, that I completely destroyed my log files in my haste to start over and try again.
+
+## Third Run
+
+VM has been rolled back to snapshot and tested with `rails -v`. In this run I will attempt to install using the notes I have taken from my first two runs through the installfest, making changes as I have noted above. 
+
+1. Install packaged software and libraries.
+
+    * I am using a truncated version of this install from what I have noted as necessary from above. I am running:
+    ```linux
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install nodejs
+    sudo apt-get install curl
+    ```
+    and then continuing on.
+
+2. Installing Git. Worked as intended.
+
+3. Install RVM. Worked as I had noted in Second Runthrough.
+
+    * Using the Ubuntu package works as it is intended to! I finally got to see `rvm is a function` which has never happened before (it's usually something close to that but different phrasing).
+
+4. Install Ruby (Version 2.5.1 as per @I3uckwheat) worked as intended.
+
+    * Note: It must be emphasized that you MUST logout and log back in to continue Ruby installation.
+
+5. Install rails. Worked as intended.
+
+6. Installed Atom. Worked as intended (using truncate instructions above).
+
+7. Configured Git. Worked as intended.
+
+8. Create an SSH key worked as intended.
+
+9. Create Heroku account. Worked as intended (Using the `curl https://cli-assets.heroku.com/install.sh | sh` method).
+
+10. Configure GitHub. Worked as intended.
+
+11. The Heroku App. Worked as intended (!!!!!!).
+
+12. Get a sticker.
+
+    * So happy, don't even need a sticker.
+
+### Final thoughts on third run through.
+
+I think this may be the shortest way through the Installfest and still come out the other side with everything necessary intact. Only three extra packages need to be installed from the beginning, the RVM for Ubuntu package works well, no issues with postgresql / sqlite3. This is probably the most concise you can get.
