@@ -144,7 +144,7 @@ Missing dependencies will be noted and, if necessary, added before continuing.
 
 I believe that the process of installfest can be drastically reduced and made clearer. Considering that I finished this entire installation in less than an hour (Whereas my previous times had ranged as high as six hours and as low as two) I am excited to try again using the methods I've listed between these two installs. So excited, in fact, that I completely destroyed my log files in my haste to start over and try again.
 
-## Third Run
+### Third Run
 
 VM has been rolled back to snapshot and tested with `rails -v`. In this run I will attempt to install using the notes I have taken from my first two runs through the installfest, making changes as I have noted above. 
 
@@ -187,6 +187,6 @@ VM has been rolled back to snapshot and tested with `rails -v`. In this run I wi
 
     * So happy, don't even need a sticker.
 
-### Final thoughts on third run through.
+#### Final thoughts on third run through.
 
 I think this may be the shortest way through the Installfest and still come out the other side with everything necessary intact. Only three extra packages need to be installed from the beginning, the RVM for Ubuntu package works well, no issues with postgresql / sqlite3. This is probably the most concise you can get.
